@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghana Muslim Mission - Complete Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1B5E20;
+            --accent: #4CAF50;
+            --gold: #D4AF37;
+            --mtn-yellow: #FFCB05;
+            --text: #1A1A1A;
+            --text-light: #666;
+            --bg: #FFF;
+            --bg-secondary: #F1F8F4;
+            --border: #C8E6C9;
+            --shadow: rgba(27, 94, 32, 0.15);
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Mobile-first Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px var(--shadow);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .logo-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a:hover {
+            background: var(--bg-secondary);
+            color: var(--primary);
+        }
+        
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .btn-donate {
+            background: linear-gradient(135deg, var(--gold), #C5A028);
+            color: white;
+        }
+        
+        .btn-signin {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-signup {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #0D3D10, var(--primary));
+            padding: 4rem 1rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .page { min-height: 60vh; }
+        .page-hidden { display: none; }
+        
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            border: 2px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+        }
+        
+        .btn-submit, .btn-action {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        
+        .btn-submit:hover, .btn-action:hover {
+            background: var(--accent);
+        }
+        
+        .btn-edit, .btn-delete {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 0.25rem;
+            color: white;
+            font-size: 0.85rem;
+        }
+        
+        .btn-edit { background: #2196F3; }
+        .btn-delete { background: #F44336; }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(13, 61, 16, 0.95);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 0.8rem 1.2rem;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: -2px;
+            font-family: 'Montserrat', sans-serif;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+        }
+        
+        .verse-display {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            text-align: right;
+            direction: rtl;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 2.2;
+        }
+        
+        .mtn-momo-box {
+            background: linear-gradient(135deg, var(--mtn-yellow), #F9B700);
+            border: 4px solid #000;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 1.5rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .mtn-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 0.5rem;
+            font-family: Arial, sans-serif;
+        }
+        
+        .momo-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #000;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+        
+        .alert-success {
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .ribbon-section {
+            background: var(--bg-secondary);
+            padding: 2rem 1rem;
+        }
+        
+        .ribbon-grid {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .ribbon-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px var(--shadow);
+            border: 3px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .ribbon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+        
+        .ribbon-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ribbon-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .ribbon-momo {
+            background: var(--mtn-yellow);
+            color: #000;
+            padding: 0.8rem;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            border: 2px solid #000;
+        }
+        
+        .item-list {
+            margin-top: 1rem;
+        }
+        
+        .item-card {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                padding: 1rem;
+            }
+            
+            .momo-number {
+                font-size: 1.5rem;
+            }
+            
+            .arabic-text {
+                font-size: 1.3rem;
+            }
+            
+            .tabs {
+                font-size: 0.85rem;
+            }
+            
+            .tab {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            
+            .mtn-logo {
+                font-size: 2rem;
+            }
+            
+            .momo-number {
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+            }
+            
+            .ribbon-icon {
+                font-size: 2.5rem;
+            }
+            
+            .ribbon-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">
+                <div class="logo-icon">🕌</div>
+                <div class="logo-text">GMM</div>
+            </div>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰ Menu</button>
+            
+            <div class="nav-links" id="nav-links">
+                <a onclick="showPage('home'); closeMobileMenu()">Home</a>
+                <a onclick="showPage('about'); closeMobileMenu()">About</a>
+                <a onclick="showPage('quran'); closeMobileMenu()">Quran</a>
+                <a onclick="showPage('events'); closeMobileMenu()">Events</a>
+                <a onclick="showPage('imam'); closeMobileMenu()">Imam</a>
+                <a onclick="showPage('proconnect'); closeMobileMenu()">ProConnect</a>
+                <a onclick="showPage('schools'); closeMobileMenu()">Schools</a>
+                <a onclick="showPage('orphanages'); closeMobileMenu()">Orphanages</a>
+            </div>
+            
+            <div id="auth-buttons" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button class="btn btn-donate" onclick="showPage('donate')">Donate</button>
+                <button class="btn btn-signin" onclick="openModal('signin-modal')">Sign In</button>
+                <button class="btn btn-signup" onclick="openModal('signup-modal')">Sign Up</button>
+            </div>
+            
+            <div class="user-info" id="user-info" style="display: none;">
+                <span id="user-role" style="background: var(--bg-secondary); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: var(--primary);"></span>
+                <span id="user-name" style="font-weight: 600; font-size: 0.9rem;"></span>
+                <button class="btn" onclick="logout()" style="background: transparent; border: 2px solid var(--primary); color: var(--primary); padding: 0.4rem 0.8rem; font-size: 0.85rem;">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        <section class="hero">
+            <h1>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
+            <h1>Ghana Muslim Mission</h1>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Strengthening faith, building community, serving humanity</p>
+        </section>
+
+        <div class="ribbon-section">
+            <div class="ribbon-grid">
+                <div class="ribbon-card" onclick="showPage('donate')">
+                    <div class="ribbon-icon">💰</div>
+                    <div class="ribbon-title">InfaQ/Donations</div>
+                    <p style="color: var(--text-light); margin-bottom: 0.5rem; font-size: 0.9rem;">Support our mission</p>
+                    <div class="ribbon-momo">MTN: 0555857384</div>
+                </div>
+                
+                <div class="ribbon-card" onclick="showPage('schools')">
+                    <div class="ribbon-icon">🎓</div>
+                    <div class="ribbon-title">Islamic Schools</div>
+                    <p style="color: var(--text-light); font-size: 0.9rem;">Quality education</p>
+                </div>
+                
+                <div class="ribbon-card" onclick="showPage('orphanages')">
+                    <div class="ribbon-icon">🏠</div>
+                    <div class="ribbon-title">Orphanages</div>
+                    <p style="color: var(--text-light); font-size: 0.9rem;">Caring for children</p>
+                </div>
+                
+                <div class="ribbon-card" onclick="showPage('proconnect')">
+                    <div class="ribbon-icon">💼</div>
+                    <div class="ribbon-title">ProConnect</div>
+                    <p style="color: var(--text-light); font-size: 0.9rem;">Business network</p>
+                </div>
+                
+                <div class="ribbon-card" onclick="showPage('events')">
+                    <div class="ribbon-icon">📅</div>
+                    <div class="ribbon-title">Events</div>
+                    <p style="color: var(--text-light); font-size: 0.9rem;">Join us</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2 class="section-title">Our Pillars of Service</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem; text-align: center;">📿</div>
+                    <h3 style="font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; text-align: center;">Islamic Education</h3>
+                    <p style="text-align: center;">Quranic studies and Islamic knowledge</p>
+                </div>
+                <div class="card">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem; text-align: center;">🤝</div>
+                    <h3 style="font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; text-align: center;">Community Support</h3>
+                    <p style="text-align: center;">Social welfare and development</p>
+                </div>
+                <div class="card">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem; text-align: center;">💼</div>
+                    <h3 style="font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; text-align: center;">Business Network</h3>
+                    <p style="text-align: center;">Professional empowerment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Page -->
+    <div id="about-page" class="page page-hidden">
+        <div class="container">
+            <h2 class="section-title">About GMM</h2>
+            <div class="card">
+                <h3 style="font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem;">Our Vision</h3>
+                <p id="vision-text" style="line-height: 1.8;"></p>
+            </div>
+            <div class="card">
+                <h3 style="font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem;">Our Mission</h3>
+                <p id="mission-text" style="line-height: 1.8;"></p>
+            </div>
+            <div class="card">
+                <h3 style="font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">Support Our Mission</h3>
+                <div class="mtn-momo-box">
+                    <div class="mtn-logo">MTN</div>
+                    <p style="font-size: 1.2rem; font-weight: 700; color: #000;">Mobile Money</p>
+                    <div class="momo-number">0555857384</div>
+                    <p style="font-size: 0.95rem; font-weight: 600; color: #000; margin-top: 0.5rem;">Ghana Muslim Mission</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Holy Quran Page -->
+    <div id="quran-page" class="page page-hidden">
+        <div class="container">
+            <h2 class="section-title">Holy Quran</h2>
+            <div class="card">
+                <div class="form-group">
+                    <label>Select Surah</label>
+                    <select id="surah-select" onchange="loadSurah()">
+                        <option value="">Choose...</option>
+                    </select>
+                </div>
+                <div id="quran-loading" class="loading" style="display: none;">Loading...</div>
+                <div id="quran-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Page -->
+    <div id="events-page" class="page page-hidden">
+        <div class="container">
+            <h2 class="section-title">Events & Programs</h2>
+            <div id="events-list"></div>
+        </div>
+    </div>
+
+    <!-- Schools Page -->
+    <div id="schools-page" class="page page-hidden">
+        <div class="container">
+            <h2 class="section-title">Islamic Schools</h2>
+            <div id="schools-content"></div>
+        </div>
+    </div>
+
+    <!-- Orphanages Page -->
+    <div id="orphanages-page" class="page page-hidden">
+        <div class="container">
+            <h2 class="section-title">Orphanages</h2>
+            <div id="orphanages-content"></div>
+        </div>
+    </div>
+
+    <!-- Imam Resources Page -->
+    <div id="imam-page" class="page page-hidden">
+        <div class="container">
+            <h2 class="section-title">Imam Resources</h2>
+            <div id="imam-resources"></div>
+        </div>
+    </div>
+
+    <!-- ProConnect Page -->
+    <div id="proconnect-page" class="page page-hidden">
+        <div class="container">
+            <h2 class="section-title">ProConnect</h2>
+            <div id="professionals-list"></div>
+        </div>
+    </div>
+
+    <!-- Donate Page -->
+    <div id="donate-page" class="page page-hidden">
+        <div class="container">
+            <h2 class="section-title">Donate</h2>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div class="mtn-momo-box">
+                    <div class="mtn-logo">MTN</div>
+                    <p style="font-size: 1.3rem; font-weight: 700; color: #000;">Mobile Money</p>
+                    <div class="momo-number">0555857384</div>
+                    <p style="font-size: 1rem; font-weight: 600; color: #000; margin-top: 0.5rem;">Ghana Muslim Mission</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-page" class="page page-hidden">
+        <div class="container">
+            <h2 class="section-title">Admin Dashboard</h2>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('overview')">Overview</button>
+                <button class="tab" onclick="switchTab('events')">Events</button>
+                <button class="tab" onclick="switchTab('imam')">Imam</button>
+                <button class="tab" onclick="switchTab('schools')">Schools</button>
+                <button class="tab" onclick="switchTab('orphanages')">Orphanages</button>
+            </div>
+
+            <!-- Overview -->
+            <div id="tab-overview" class="card">
+                <h3>Dashboard</h3>
+                <p>Welcome, <span id="admin-name"></span>!</p>
+            </div>
+
+            <!-- Events Tab -->
+            <div id="tab-events" class="card" style="display: none;">
+                <h3 style="margin-bottom: 1rem;">Manage Events</h3>
+                <div id="event-message"></div>
+                
+                <button class="btn-action" onclick="showEventForm()">+ Create Event</button>
+                
+                <div id="event-editor" style="display: none; margin-top: 1.5rem; padding: 1.5rem; background: var(--bg-secondary); border-radius: 15px;">
+                    <h4 style="margin-bottom: 1rem;">Event Details</h4>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="e-type">
+                            <option value="event">Event</option>
+                            <option value="conference">Conference</option>
+                            <option value="program">Program</option>
+                            <option value="ramadan">Ramadan</option>
+                            <option value="convention">Convention</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="e-title">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="e-date">
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="time" id="e-time">
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="e-location">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="e-description" rows="6"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Media</label>
+                        <input type="file" id="e-media" accept="image/*,.pdf">
+                    </div>
+                    <button class="btn-submit" onclick="saveEvent()">💾 Save Event</button>
+                </div>
+                
+                <div id="events-admin-list" class="item-list"></div>
+            </div>
+
+            <!-- Imam Tab -->
+            <div id="tab-imam" class="card" style="display: none;">
+                <h3 style="margin-bottom: 1rem;">Manage Imam Resources</h3>
+                <div id="imam-message"></div>
+                
+                <button class="btn-action" onclick="showImamForm()">+ Upload Resource</button>
+                
+                <div id="imam-editor" style="display: none; margin-top: 1.5rem; padding: 1.5rem; background: var(--bg-secondary); border-radius: 15px;">
+                    <h4 style="margin-bottom: 1rem;">Resource Details</h4>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="i-title">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="i-description" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Imam Name</label>
+                        <input type="text" id="i-author">
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Media</label>
+                        <input type="file" id="i-media" accept="audio/*,video/*,.pdf">
+                    </div>
+                    <div class="form-group">
+                        <label>Or URL</label>
+                        <input type="url" id="i-url">
+                    </div>
+                    <button class="btn-submit" onclick="saveImamResource()">💾 Save Resource</button>
+                </div>
+                
+                <div id="imam-admin-list" class="item-list"></div>
+            </div>
+
+            <!-- Schools Tab -->
+            <div id="tab-schools" class="card" style="display: none;">
+                <h3 style="margin-bottom: 1rem;">Edit Schools Content</h3>
+                <div id="schools-message"></div>
+                
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="s-title">
+                </div>
+                <div class="form-group">
+                    <label>Main Content</label>
+                    <textarea id="s-content" rows="8"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Programs</label>
+                    <textarea id="s-programs" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Latest News</label>
+                    <textarea id="s-news" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload Photos</label>
+                    <input type="file" id="s-media" accept="image/*" multiple>
+                </div>
+                <button class="btn-submit" onclick="saveSchools()">💾 Update Schools</button>
+            </div>
+
+            <!-- Orphanages Tab -->
+            <div id="tab-orphanages" class="card" style="display: none;">
+                <h3 style="margin-bottom: 1rem;">Edit Orphanages Content</h3>
+                <div id="orphanages-message"></div>
+                
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="o-title">
+                </div>
+                <div class="form-group">
+                    <label>Main Content</label>
+                    <textarea id="o-content" rows="8"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Current Needs</label>
+                    <textarea id="o-needs" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Success Stories</label>
+                    <textarea id="o-stories" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload Photos</label>
+                    <input type="file" id="o-media" accept="image/*" multiple>
+                </div>
+                <button class="btn-submit" onclick="saveOrphanages()">💾 Update Orphanages</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="modal" id="signin-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('signin-modal')">&times;</button>
+            <h2 style="font-family: 'Amiri', serif; font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;">Sign In</h2>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="signin-username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="signin-password">
+            </div>
+            <button class="btn-submit" onclick="handleSignin()">Sign In</button>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('signup-modal')">&times;</button>
+            <h2 style="font-family: 'Amiri', serif; font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;">Sign Up</h2>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="switchSignupForm('member')">Member</button>
+                <button class="tab" onclick="switchSignupForm('proconnect')">ProConnect</button>
+                <button class="tab" onclick="switchSignupForm('freelancer')">Freelancer</button>
+            </div>
+
+            <!-- Member Form -->
+            <div id="signup-member" class="signup-form">
+                <p style="background: var(--bg-secondary); padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; font-size: 0.9rem;"><strong>General Membership:</strong> Be part of the GMM community</p>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label>Region</label>
+                    <select>
+                        <option>Greater Accra</option>
+                        <option>Ashanti</option>
+                        <option>Western</option>
+                        <option>Central</option>
+                        <option>Eastern</option>
+                        <option>Northern</option>
+                        <option>Upper East</option>
+                        <option>Upper West</option>
+                        <option>Volta</option>
+                        <option>Bono</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required>
+                </div>
+                <button class="btn-submit" onclick="handleSignup('member')">Create Member Account</button>
+            </div>
+
+            <!-- ProConnect Form -->
+            <div id="signup-proconnect" class="signup-form" style="display: none;">
+                <p style="background: var(--bg-secondary); padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; font-size: 0.9rem;"><strong>ProConnect:</strong> Join our professional business network • GHS 200/year</p>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label>Business/Profession</label>
+                    <input type="text" required placeholder="e.g., Plumber, Caterer">
+                </div>
+                <div class="form-group">
+                    <label>Business Description</label>
+                    <textarea rows="3" placeholder="Describe your services"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Region</label>
+                    <select>
+                        <option>Greater Accra</option>
+                        <option>Ashanti</option>
+                        <option>Western</option>
+                        <option>Central</option>
+                        <option>Eastern</option>
+                        <option>Northern</option>
+                        <option>Upper East</option>
+                        <option>Upper West</option>
+                        <option>Volta</option>
+                        <option>Bono</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Rate (GHS/hour)</label>
+                    <input type="number" min="1">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required>
+                </div>
+                <p style="background: #FFF3E0; padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; font-size: 0.85rem;"><strong>Payment:</strong> MTN MoMo 0555857384 (GHS 200). Admin will verify and activate.</p>
+                <button class="btn-submit" onclick="handleSignup('proconnect')">Submit Application</button>
+            </div>
+
+            <!-- Freelancer Form -->
+            <div id="signup-freelancer" class="signup-form" style="display: none;">
+                <p style="background: var(--bg-secondary); padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; font-size: 0.9rem;"><strong>Freelancer:</strong> Join as an independent freelancer</p>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label>Skills/Services</label>
+                    <input type="text" placeholder="e.g., Graphic Design, Web Development">
+                </div>
+                <div class="form-group">
+                    <label>Portfolio Link (Optional)</label>
+                    <input type="url" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>Region</label>
+                    <select>
+                        <option>Greater Accra</option>
+                        <option>Ashanti</option>
+                        <option>Western</option>
+                        <option>Central</option>
+                        <option>Eastern</option>
+                        <option>Northern</option>
+                        <option>Upper East</option>
+                        <option>Upper West</option>
+                        <option>Volta</option>
+                        <option>Bono</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required>
+                </div>
+                <button class="btn-submit" onclick="handleSignup('freelancer')">Create Freelancer Account</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quran Data (All 114 Surahs)
+        const SURAHS = [{n:1,ar:'الفاتحة',en:'Al-Fatihah',v:7},{n:2,ar:'البقرة',en:'Al-Baqarah',v:286},{n:3,ar:'آل عمران',en:'Ali Imran',v:200},{n:4,ar:'النساء',en:'An-Nisa',v:176},{n:5,ar:'المائدة',en:'Al-Maidah',v:120},{n:6,ar:'الأنعام',en:'Al-Anam',v:165},{n:7,ar:'الأعراف',en:'Al-Araf',v:206},{n:8,ar:'الأنفال',en:'Al-Anfal',v:75},{n:9,ar:'التوبة',en:'At-Tawbah',v:129},{n:10,ar:'يونس',en:'Yunus',v:109},{n:11,ar:'هود',en:'Hud',v:123},{n:12,ar:'يوسف',en:'Yusuf',v:111},{n:13,ar:'الرعد',en:'Ar-Rad',v:43},{n:14,ar:'ابراهيم',en:'Ibrahim',v:52},{n:15,ar:'الحجر',en:'Al-Hijr',v:99},{n:16,ar:'النحل',en:'An-Nahl',v:128},{n:17,ar:'الإسراء',en:'Al-Isra',v:111},{n:18,ar:'الكهف',en:'Al-Kahf',v:110},{n:19,ar:'مريم',en:'Maryam',v:98},{n:20,ar:'طه',en:'Ta-Ha',v:135},{n:21,ar:'الأنبياء',en:'Al-Anbiya',v:112},{n:22,ar:'الحج',en:'Al-Hajj',v:78},{n:23,ar:'المؤمنون',en:'Al-Muminun',v:118},{n:24,ar:'النور',en:'An-Nur',v:64},{n:25,ar:'الفرقان',en:'Al-Furqan',v:77},{n:26,ar:'الشعراء',en:'Ash-Shuara',v:227},{n:27,ar:'النمل',en:'An-Naml',v:93},{n:28,ar:'القصص',en:'Al-Qasas',v:88},{n:29,ar:'العنكبوت',en:'Al-Ankabut',v:69},{n:30,ar:'الروم',en:'Ar-Rum',v:60},{n:31,ar:'لقمان',en:'Luqman',v:34},{n:32,ar:'السجدة',en:'As-Sajdah',v:30},{n:33,ar:'الأحزاب',en:'Al-Ahzab',v:73},{n:34,ar:'سبإ',en:'Saba',v:54},{n:35,ar:'فاطر',en:'Fatir',v:45},{n:36,ar:'يس',en:'Ya-Sin',v:83},{n:37,ar:'الصافات',en:'As-Saffat',v:182},{n:38,ar:'ص',en:'Sad',v:88},{n:39,ar:'الزمر',en:'Az-Zumar',v:75},{n:40,ar:'غافر',en:'Ghafir',v:85},{n:41,ar:'فصلت',en:'Fussilat',v:54},{n:42,ar:'الشورى',en:'Ash-Shura',v:53},{n:43,ar:'الزخرف',en:'Az-Zukhruf',v:89},{n:44,ar:'الدخان',en:'Ad-Dukhan',v:59},{n:45,ar:'الجاثية',en:'Al-Jathiyah',v:37},{n:46,ar:'الأحقاف',en:'Al-Ahqaf',v:35},{n:47,ar:'محمد',en:'Muhammad',v:38},{n:48,ar:'الفتح',en:'Al-Fath',v:29},{n:49,ar:'الحجرات',en:'Al-Hujurat',v:18},{n:50,ar:'ق',en:'Qaf',v:45},{n:51,ar:'الذاريات',en:'Adh-Dhariyat',v:60},{n:52,ar:'الطور',en:'At-Tur',v:49},{n:53,ar:'النجم',en:'An-Najm',v:62},{n:54,ar:'القمر',en:'Al-Qamar',v:55},{n:55,ar:'الرحمن',en:'Ar-Rahman',v:78},{n:56,ar:'الواقعة',en:'Al-Waqiah',v:96},{n:57,ar:'الحديد',en:'Al-Hadid',v:29},{n:58,ar:'المجادلة',en:'Al-Mujadila',v:22},{n:59,ar:'الحشر',en:'Al-Hashr',v:24},{n:60,ar:'الممتحنة',en:'Al-Mumtahanah',v:13},{n:61,ar:'الصف',en:'As-Saf',v:14},{n:62,ar:'الجمعة',en:'Al-Jumuah',v:11},{n:63,ar:'المنافقون',en:'Al-Munafiqun',v:11},{n:64,ar:'التغابن',en:'At-Taghabun',v:18},{n:65,ar:'الطلاق',en:'At-Talaq',v:12},{n:66,ar:'التحريم',en:'At-Tahrim',v:12},{n:67,ar:'الملك',en:'Al-Mulk',v:30},{n:68,ar:'القلم',en:'Al-Qalam',v:52},{n:69,ar:'الحاقة',en:'Al-Haqqah',v:52},{n:70,ar:'المعارج',en:'Al-Maarij',v:44},{n:71,ar:'نوح',en:'Nuh',v:28},{n:72,ar:'الجن',en:'Al-Jinn',v:28},{n:73,ar:'المزمل',en:'Al-Muzzammil',v:20},{n:74,ar:'المدثر',en:'Al-Muddaththir',v:56},{n:75,ar:'القيامة',en:'Al-Qiyamah',v:40},{n:76,ar:'الانسان',en:'Al-Insan',v:31},{n:77,ar:'المرسلات',en:'Al-Mursalat',v:50},{n:78,ar:'النبإ',en:'An-Naba',v:40},{n:79,ar:'النازعات',en:'An-Naziat',v:46},{n:80,ar:'عبس',en:'Abasa',v:42},{n:81,ar:'التكوير',en:'At-Takwir',v:29},{n:82,ar:'الإنفطار',en:'Al-Infitar',v:19},{n:83,ar:'المطففين',en:'Al-Mutaffifin',v:36},{n:84,ar:'الإنشقاق',en:'Al-Inshiqaq',v:25},{n:85,ar:'البروج',en:'Al-Buruj',v:22},{n:86,ar:'الطارق',en:'At-Tariq',v:17},{n:87,ar:'الأعلى',en:'Al-Ala',v:19},{n:88,ar:'الغاشية',en:'Al-Ghashiyah',v:26},{n:89,ar:'الفجر',en:'Al-Fajr',v:30},{n:90,ar:'البلد',en:'Al-Balad',v:20},{n:91,ar:'الشمس',en:'Ash-Shams',v:15},{n:92,ar:'الليل',en:'Al-Layl',v:21},{n:93,ar:'الضحى',en:'Ad-Duhaa',v:11},{n:94,ar:'الشرح',en:'Ash-Sharh',v:8},{n:95,ar:'التين',en:'At-Tin',v:8},{n:96,ar:'العلق',en:'Al-Alaq',v:19},{n:97,ar:'القدر',en:'Al-Qadr',v:5},{n:98,ar:'البينة',en:'Al-Bayyinah',v:8},{n:99,ar:'الزلزلة',en:'Az-Zalzalah',v:8},{n:100,ar:'العاديات',en:'Al-Adiyat',v:11},{n:101,ar:'القارعة',en:'Al-Qariah',v:11},{n:102,ar:'التكاثر',en:'At-Takathur',v:8},{n:103,ar:'العصر',en:'Al-Asr',v:3},{n:104,ar:'الهمزة',en:'Al-Humazah',v:9},{n:105,ar:'الفيل',en:'Al-Fil',v:5},{n:106,ar:'قريش',en:'Quraysh',v:4},{n:107,ar:'الماعون',en:'Al-Maun',v:7},{n:108,ar:'الكوثر',en:'Al-Kawthar',v:3},{n:109,ar:'الكافرون',en:'Al-Kafirun',v:6},{n:110,ar:'النصر',en:'An-Nasr',v:3},{n:111,ar:'المسد',en:'Al-Masad',v:5},{n:112,ar:'الإخلاص',en:'Al-Ikhlas',v:4},{n:113,ar:'الفلق',en:'Al-Falaq',v:5},{n:114,ar:'الناس',en:'An-Nas',v:6}];
+
+        // Database
+        const DB = {
+            users: JSON.parse(localStorage.getItem('gmm_users') || '[]'),
+            events: JSON.parse(localStorage.getItem('gmm_events') || '[]'),
+            imamResources: JSON.parse(localStorage.getItem('gmm_imam') || '[]'),
+            schools: JSON.parse(localStorage.getItem('gmm_schools') || '{"title":"Islamic Schools","content":"GMM operates Islamic schools across Ghana","programs":"Quranic Studies","news":"Latest updates"}'),
+            orphanages: JSON.parse(localStorage.getItem('gmm_orphanages') || '{"title":"Orphanages","content":"Caring for children","needs":"Support needed","stories":"Success stories"}'),
+            settings: JSON.parse(localStorage.getItem('gmm_settings') || '{"vision":"Leading Islamic organization","mission":"Comprehensive education"}'),
+            save() {
+                localStorage.setItem('gmm_users', JSON.stringify(this.users));
+                localStorage.setItem('gmm_events', JSON.stringify(this.events));
+                localStorage.setItem('gmm_imam', JSON.stringify(this.imamResources));
+                localStorage.setItem('gmm_schools', JSON.stringify(this.schools));
+                localStorage.setItem('gmm_orphanages', JSON.stringify(this.orphanages));
+                localStorage.setItem('gmm_settings', JSON.stringify(this.settings));
+            }
+        };
+
+        // Init admin
+        if (!DB.users.find(u => u.username === 'Amisco4u2')) {
+            DB.users.push({username: 'Amisco4u2', password: 'Amiena702$', name: 'Admin', role: 'admin'});
+            DB.save();
+        }
+
+        let currentUser = null;
+        let currentEventId = null;
+        let currentImamId = null;
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            document.getElementById('nav-links').classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('nav-links').classList.remove('active');
+        }
+
+        // Navigation
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.add('page-hidden'));
+            document.getElementById(page + '-page').classList.remove('page-hidden');
+            window.scrollTo(0, 0);
+            
+            if (page === 'quran') initQuran();
+            if (page === 'events') loadEventsPublic();
+            if (page === 'schools') loadSchoolsPublic();
+            if (page === 'orphanages') loadOrphanagesPublic();
+            if (page === 'imam') loadImamPublic();
+            if (page === 'about') loadAbout();
+            if (page === 'admin') loadAdmin();
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        // Login
+        function handleSignin() {
+            const username = document.getElementById('signin-username').value;
+            const password = document.getElementById('signin-password').value;
+            
+            const user = DB.users.find(u => u.username === username && u.password === password);
+            if (!user) {
+                alert('Invalid credentials');
+                return;
+            }
+            
+            currentUser = user;
+            document.getElementById('auth-buttons').style.display = 'none';
+            document.getElementById('user-info').style.display = 'flex';
+            document.getElementById('user-role').textContent = user.role.toUpperCase();
+            document.getElementById('user-name').textContent = user.name;
+            
+            closeModal('signin-modal');
+            
+            if (user.role === 'admin' || user.role === 'developer') {
+                showPage('admin');
+            } else {
+                showPage('home');
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('auth-buttons').style.display = 'flex';
+            document.getElementById('user-info').style.display = 'none';
+            showPage('home');
+        }
+
+        // Signup Forms
+        function switchSignupForm(type) {
+            document.querySelectorAll('#signup-modal .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.signup-form').forEach(f => f.style.display = 'none');
+            document.getElementById('signup-' + type).style.display = 'block';
+        }
+
+        function handleSignup(type) {
+            alert(`${type} application submitted! Admin will review.`);
+            closeModal('signup-modal');
+        }
+
+        // Quran
+        function initQuran() {
+            const select = document.getElementById('surah-select');
+            select.innerHTML = '<option value="">Choose...</option>' +
+                SURAHS.map(s => `<option value="${s.n}">${s.n}. ${s.en} (${s.ar})</option>`).join('');
+        }
+
+        async function loadSurah() {
+            const num = document.getElementById('surah-select').value;
+            if (!num) return;
+            
+            document.getElementById('quran-loading').style.display = 'block';
+            document.getElementById('quran-content').innerHTML = '';
+            
+            try {
+                const res = await fetch(`https://api.alquran.cloud/v1/surah/${num}/editions/quran-uthmani,en.sahih`);
+                const data = await res.json();
+                
+                if (data.code === 200) {
+                    const ar = data.data[0];
+                    const en = data.data[1];
+                    
+                    let html = `<div style="background: var(--primary); color: white; padding: 1.5rem; border-radius: 15px; text-align: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.8rem;">${ar.englishName}</h3>
+                        <p style="font-family: 'Amiri', serif; font-size: 1.5rem;">${ar.name}</p>
+                    </div>`;
+                    
+                    for (let i = 0; i < ar.ayahs.length; i++) {
+                        html += `<div class="verse-display">
+                            <div class="arabic-text">${ar.ayahs[i].text}</div>
+                            <div><strong>${i + 1}.</strong> ${en.ayahs[i].text}</div>
+                        </div>`;
+                    }
+                    
+                    document.getElementById('quran-content').innerHTML = html;
+                }
+            } catch (err) {
+                document.getElementById('quran-content').innerHTML = '<p style="color: red; text-align: center;">Error loading. Check internet.</p>';
+            }
+            
+            document.getElementById('quran-loading').style.display = 'none';
+        }
+
+        // About
+        function loadAbout() {
+            document.getElementById('vision-text').textContent = DB.settings.vision || '';
+            document.getElementById('mission-text').textContent = DB.settings.mission || '';
+        }
+
+        // EVENTS - WORKING CRUD
+        function loadEventsPublic() {
+            const list = document.getElementById('events-list');
+            if (DB.events.length === 0) {
+                list.innerHTML = '<div class="card"><p style="text-align: center;">No events yet</p></div>';
+            } else {
+                list.innerHTML = DB.events.map(e => `
+                    <div class="card">
+                        <div style="background: var(--accent); color: white; padding: 0.4rem 0.8rem; border-radius: 15px; display: inline-block; font-size: 0.8rem; margin-bottom: 0.5rem;">${e.type}</div>
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">${e.title}</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">📅 ${e.date} • 🕐 ${e.time || 'TBA'}</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">📍 ${e.location}</p>
+                        <p style="white-space: pre-line; margin-top: 1rem;">${e.description}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function showEventForm() {
+            currentEventId = null;
+            document.getElementById('e-type').value = 'event';
+            document.getElementById('e-title').value = '';
+            document.getElementById('e-date').value = '';
+            document.getElementById('e-time').value = '';
+            document.getElementById('e-location').value = '';
+            document.getElementById('e-description').value = '';
+            document.getElementById('event-editor').style.display = 'block';
+            document.getElementById('event-editor').scrollIntoView({behavior: 'smooth'});
+        }
+
+        function editEvent(id) {
+            const evt = DB.events.find(e => e.id === id);
+            if (evt) {
+                currentEventId = id;
+                document.getElementById('e-type').value = evt.type;
+                document.getElementById('e-title').value = evt.title;
+                document.getElementById('e-date').value = evt.date;
+                document.getElementById('e-time').value = evt.time || '';
+                document.getElementById('e-location').value = evt.location;
+                document.getElementById('e-description').value = evt.description;
+                document.getElementById('event-editor').style.display = 'block';
+                document.getElementById('event-editor').scrollIntoView({behavior: 'smooth'});
+            }
+        }
+
+        function saveEvent() {
+            const files = document.getElementById('e-media').files;
+            const data = {
+                type: document.getElementById('e-type').value,
+                title: document.getElementById('e-title').value,
+                date: document.getElementById('e-date').value,
+                time: document.getElementById('e-time').value,
+                location: document.getElementById('e-location').value,
+                description: document.getElementById('e-description').value,
+                media: files.length > 0 ? files[0].name : null
+            };
+            
+            if (!data.title || !data.date || !data.location || !data.description) {
+                alert('Please fill all required fields');
+                return;
+            }
+            
+            if (currentEventId) {
+                const evt = DB.events.find(e => e.id === currentEventId);
+                if (evt) Object.assign(evt, data);
+            } else {
+                DB.events.push({id: Date.now(), ...data});
+            }
+            
+            DB.save();
+            document.getElementById('event-message').innerHTML = '<div class="alert-success">✅ Event saved!</div>';
+            setTimeout(() => {document.getElementById('event-message').innerHTML = '';}, 3000);
+            document.getElementById('event-editor').style.display = 'none';
+            loadEventsAdmin();
+        }
+
+        function deleteEvent(id) {
+            if (confirm('Delete this event?')) {
+                DB.events = DB.events.filter(e => e.id !== id);
+                DB.save();
+                loadEventsAdmin();
+            }
+        }
+
+        function loadEventsAdmin() {
+            const list = document.getElementById('events-admin-list');
+            if (DB.events.length === 0) {
+                list.innerHTML = '<p style="text-align: center; padding: 1rem;">No events yet</p>';
+            } else {
+                list.innerHTML = DB.events.map(e => `
+                    <div class="item-card">
+                        <strong>${e.title}</strong> (${e.type})<br>
+                        <span style="font-size: 0.85rem; color: var(--text-light);">${e.date} • ${e.location}</span><br>
+                        <button class="btn-edit" onclick="editEvent(${e.id})">Edit</button>
+                        <button class="btn-delete" onclick="deleteEvent(${e.id})">Delete</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // IMAM RESOURCES - WORKING CRUD
+        function loadImamPublic() {
+            const list = document.getElementById('imam-resources');
+            if (DB.imamResources.length === 0) {
+                list.innerHTML = '<div class="card"><p style="text-align: center;">No resources yet</p></div>';
+            } else {
+                list.innerHTML = DB.imamResources.map(r => `
+                    <div class="card">
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">${r.title}</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">By ${r.author}</p>
+                        <p>${r.description}</p>
+                        ${r.url ? `<p style="margin-top: 0.5rem;"><a href="${r.url}" target="_blank" style="color: var(--primary);">📎 View Resource</a></p>` : ''}
+                    </div>
+                `).join('');
+            }
+        }
+
+        function showImamForm() {
+            currentImamId = null;
+            document.getElementById('i-title').value = '';
+            document.getElementById('i-description').value = '';
+            document.getElementById('i-author').value = '';
+            document.getElementById('i-url').value = '';
+            document.getElementById('imam-editor').style.display = 'block';
+            document.getElementById('imam-editor').scrollIntoView({behavior: 'smooth'});
+        }
+
+        function editImamResource(id) {
+            const res = DB.imamResources.find(r => r.id === id);
+            if (res) {
+                currentImamId = id;
+                document.getElementById('i-title').value = res.title;
+                document.getElementById('i-description').value = res.description;
+                document.getElementById('i-author').value = res.author;
+                document.getElementById('i-url').value = res.url || '';
+                document.getElementById('imam-editor').style.display = 'block';
+                document.getElementById('imam-editor').scrollIntoView({behavior: 'smooth'});
+            }
+        }
+
+        function saveImamResource() {
+            const files = document.getElementById('i-media').files;
+            const data = {
+                title: document.getElementById('i-title').value,
+                description: document.getElementById('i-description').value,
+                author: document.getElementById('i-author').value,
+                url: document.getElementById('i-url').value,
+                media: files.length > 0 ? files[0].name : null
+            };
+            
+            if (!data.title || !data.description || !data.author) {
+                alert('Please fill all required fields');
+                return;
+            }
+            
+            if (currentImamId) {
+                const res = DB.imamResources.find(r => r.id === currentImamId);
+                if (res) Object.assign(res, data);
+            } else {
+                DB.imamResources.push({id: Date.now(), ...data});
+            }
+            
+            DB.save();
+            document.getElementById('imam-message').innerHTML = '<div class="alert-success">✅ Resource saved!</div>';
+            setTimeout(() => {document.getElementById('imam-message').innerHTML = '';}, 3000);
+            document.getElementById('imam-editor').style.display = 'none';
+            loadImamAdmin();
+        }
+
+        function deleteImamResource(id) {
+            if (confirm('Delete this resource?')) {
+                DB.imamResources = DB.imamResources.filter(r => r.id !== id);
+                DB.save();
+                loadImamAdmin();
+            }
+        }
+
+        function loadImamAdmin() {
+            const list = document.getElementById('imam-admin-list');
+            if (DB.imamResources.length === 0) {
+                list.innerHTML = '<p style="text-align: center; padding: 1rem;">No resources yet</p>';
+            } else {
+                list.innerHTML = DB.imamResources.map(r => `
+                    <div class="item-card">
+                        <strong>${r.title}</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--text-light);">By ${r.author}</span><br>
+                        <button class="btn-edit" onclick="editImamResource(${r.id})">Edit</button>
+                        <button class="btn-delete" onclick="deleteImamResource(${r.id})">Delete</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // SCHOOLS - WORKING
+        function loadSchoolsPublic() {
+            const content = document.getElementById('schools-content');
+            content.innerHTML = `
+                <div class="card">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">${DB.schools.title}</h3>
+                    <p style="white-space: pre-line; margin-bottom: 1rem;">${DB.schools.content}</p>
+                    ${DB.schools.programs ? `<h4 style="color: var(--primary); margin: 1rem 0 0.5rem 0;">Programs</h4><p style="white-space: pre-line;">${DB.schools.programs}</p>` : ''}
+                    ${DB.schools.news ? `<h4 style="color: var(--primary); margin: 1rem 0 0.5rem 0;">Latest News</h4><p style="white-space: pre-line;">${DB.schools.news}</p>` : ''}
+                </div>
+            `;
+        }
+
+        function saveSchools() {
+            const files = document.getElementById('s-media').files;
+            DB.schools = {
+                title: document.getElementById('s-title').value,
+                content: document.getElementById('s-content').value,
+                programs: document.getElementById('s-programs').value,
+                news: document.getElementById('s-news').value,
+                mediaCount: files.length
+            };
+            DB.save();
+            
+            document.getElementById('schools-message').innerHTML = `<div class="alert-success">✅ Schools updated!${files.length > 0 ? ` ${files.length} file(s) attached.` : ''}</div>`;
+            setTimeout(() => {document.getElementById('schools-message').innerHTML = '';}, 3000);
+        }
+
+        // ORPHANAGES - WORKING
+        function loadOrphanagesPublic() {
+            const content = document.getElementById('orphanages-content');
+            content.innerHTML = `
+                <div class="card">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">${DB.orphanages.title}</h3>
+                    <p style="white-space: pre-line; margin-bottom: 1rem;">${DB.orphanages.content}</p>
+                    ${DB.orphanages.needs ? `<h4 style="color: var(--primary); margin: 1rem 0 0.5rem 0;">Current Needs</h4><p style="white-space: pre-line;">${DB.orphanages.needs}</p>` : ''}
+                    ${DB.orphanages.stories ? `<h4 style="color: var(--primary); margin: 1rem 0 0.5rem 0;">Success Stories</h4><p style="white-space: pre-line;">${DB.orphanages.stories}</p>` : ''}
+                    <div class="mtn-momo-box">
+                        <div class="mtn-logo">MTN</div>
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #000;">Mobile Money</p>
+                        <div class="momo-number">0555857384</div>
+                        <p style="font-size: 0.95rem; font-weight: 600; color: #000; margin-top: 0.5rem;">Support Orphanages</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function saveOrphanages() {
+            const files = document.getElementById('o-media').files;
+            DB.orphanages = {
+                title: document.getElementById('o-title').value,
+                content: document.getElementById('o-content').value,
+                needs: document.getElementById('o-needs').value,
+                stories: document.getElementById('o-stories').value,
+                mediaCount: files.length
+            };
+            DB.save();
+            
+            document.getElementById('orphanages-message').innerHTML = `<div class="alert-success">✅ Orphanages updated!${files.length > 0 ? ` ${files.length} file(s) attached.` : ''}</div>`;
+            setTimeout(() => {document.getElementById('orphanages-message').innerHTML = '';}, 3000);
+        }
+
+        // Admin Tabs
+        function switchTab(tab) {
+            document.querySelectorAll('#admin-page .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('[id^="tab-"]').forEach(t => t.style.display = 'none');
+            document.getElementById('tab-' + tab).style.display = 'block';
+            
+            if (tab === 'events') loadEventsAdmin();
+            if (tab === 'imam') loadImamAdmin();
+            if (tab === 'schools') loadSchoolsForm();
+            if (tab === 'orphanages') loadOrphanagesForm();
+        }
+
+        function loadAdmin() {
+            if (!currentUser || (currentUser.role !== 'admin' && currentUser.role !== 'developer')) {
+                alert('Admin access only');
+                showPage('home');
+                return;
+            }
+            
+            document.getElementById('admin-name').textContent = currentUser.name;
+            loadEventsAdmin();
+        }
+
+        function loadSchoolsForm() {
+            document.getElementById('s-title').value = DB.schools.title;
+            document.getElementById('s-content').value = DB.schools.content;
+            document.getElementById('s-programs').value = DB.schools.programs;
+            document.getElementById('s-news').value = DB.schools.news;
+        }
+
+        function loadOrphanagesForm() {
+            document.getElementById('o-title').value = DB.orphanages.title;
+            document.getElementById('o-content').value = DB.orphanages.content;
+            document.getElementById('o-needs').value = DB.orphanages.needs;
+            document.getElementById('o-stories').value = DB.orphanages.stories;
+        }
+
+        // Initialize
+        console.log('GMM Ready | Login: Amisco4u2 / Amiena702$ | MoMo: 0555857384');
+    </script>
+</body>
+</html>
